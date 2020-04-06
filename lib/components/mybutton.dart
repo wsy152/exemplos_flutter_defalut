@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  String text;
-  Function click;
+  final String text;
+  final Function click;
   MyButton(
     this.text,
     this.click,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_experience/Views/home_page.dart';
+import 'package:project_experience/actions/mynav.dart';
+import 'package:project_experience/apis/login_api.dart';
 import 'package:project_experience/components/mybutton.dart';
 import 'package:project_experience/components/mytextformfield.dart';
 
@@ -16,7 +19,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -82,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
     if (tamanho.width < 500) {}
   }
 
-  _onClickLogin() {
+  _onClickLogin() async {
     bool formOK = _formKey.currentState.validate();
     if (!formOK) {
       return;
@@ -91,6 +93,14 @@ class _LoginPageState extends State<LoginPage> {
     String senha = _tSenha.text;
     print(senha);
     print(login);
+
+    bool ok = await LoginApi.login(login, senha);
+
+    if (ok) {
+      push(context, HomePage());
+    } else {
+      print('Login com erro');
+    }
   }
 
   String _validarLogin(String text) {

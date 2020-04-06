@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MyTextFormField extends StatelessWidget {
-  String label;
-  String hint;
-  bool senha = false;
-  TextEditingController ctrl;
-  FormFieldValidator<String> validar;
-  TextInputType tipoTeclado;
-  TextInputAction textInputAction;
-  FocusNode focusNode;
-  FocusNode nextFocus;
+  final String label;
+  final String hint;
+  final bool senha;
+  final TextEditingController ctrl;
+  final FormFieldValidator<String> validar;
+  final TextInputType tipoTeclado;
+  final TextInputAction textInputAction;
+  final FocusNode focusNode;
+  final FocusNode nextFocus;
 
   MyTextFormField(
     this.label,
