@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_experience/Views/home_page.dart';
 import 'package:project_experience/actions/mynav.dart';
 import 'package:project_experience/apis/login_api.dart';
+import 'package:project_experience/class/api_response.dart';
 import 'package:project_experience/class/usuario.dart';
 import 'package:project_experience/components/mybutton.dart';
 import 'package:project_experience/components/mytextformfield.dart';
@@ -95,9 +96,10 @@ class _LoginPageState extends State<LoginPage> {
     print(senha);
     print(login);
 
-    Usuario user = await LoginApi.login(login, senha);
+    ApiResponse response = await LoginApi.login(login, senha);
 
-    if (user != null) {
+    if (response.ok) {
+      Usuario user = response.result;
       print('>>>> $user');
       push(context, HomePage());
     } else {
