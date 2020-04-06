@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_experience/Views/home_page.dart';
 import 'package:project_experience/actions/mynav.dart';
 import 'package:project_experience/apis/login_api.dart';
+import 'package:project_experience/class/usuario.dart';
 import 'package:project_experience/components/mybutton.dart';
 import 'package:project_experience/components/mytextformfield.dart';
 
@@ -94,9 +95,10 @@ class _LoginPageState extends State<LoginPage> {
     print(senha);
     print(login);
 
-    bool ok = await LoginApi.login(login, senha);
+    Usuario user = await LoginApi.login(login, senha);
 
-    if (ok) {
+    if (user != null) {
+      print('>>>> $user');
       push(context, HomePage());
     } else {
       print('Login com erro');
