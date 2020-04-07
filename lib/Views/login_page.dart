@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_experience/Views/home_page.dart';
+import 'package:project_experience/actions/alert.dart';
 import 'package:project_experience/actions/mynav.dart';
 import 'package:project_experience/apis/login_api.dart';
 import 'package:project_experience/class/api_response.dart';
@@ -103,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
       print('>>>> $user');
       push(context, HomePage());
     } else {
-      print('Login com erro');
+      alert(context, response.msg);
     }
   }
 
