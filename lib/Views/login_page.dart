@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
     print(login);
 
     setState(() {
-       _showProgress = true;
+      _showProgress = true;
     });
 
     ApiResponse response = await LoginApi.login(login, senha);
@@ -111,13 +111,13 @@ class _LoginPageState extends State<LoginPage> {
     if (response.ok) {
       Usuario user = response.result;
       print('>>>> $user');
-      push(context, HomePage());
+      push(context, HomePage(), replace: true);
     } else {
       alert(context, response.msg);
     }
 
     setState(() {
-       _showProgress = false;
+      _showProgress = false;
     });
   }
 
