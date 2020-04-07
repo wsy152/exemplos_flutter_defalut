@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final _tSenha = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _focusSenha = FocusNode();
+  bool _showProgress = false;
 
   @override
   void initState() {
@@ -70,10 +71,14 @@ class _LoginPageState extends State<LoginPage> {
                     focusNode: _focusSenha,
                   ),
                   SizedBox(height: 35),
-                  MyButton(
-                    'Login',
-                    _onClickLogin,
-                  ),
+                  _showProgress
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : MyButton(
+                          'Login',
+                          _onClickLogin,
+                        ),
                 ],
               ),
             ),
@@ -97,6 +102,10 @@ class _LoginPageState extends State<LoginPage> {
     print(senha);
     print(login);
 
+    setState(() {
+       _showProgress = true;
+    });
+
     ApiResponse response = await LoginApi.login(login, senha);
 
     if (response.ok) {
@@ -106,6 +115,10 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       alert(context, response.msg);
     }
+
+    setState(() {
+       _showProgress = false;
+    });
   }
 
   String _validarLogin(String text) {

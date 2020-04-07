@@ -1,11 +1,18 @@
 # Este projeto tem como objetivo melhorar abilidades em diversos topicos
 
- * 
+ # Utilizando as seguintes ferramentas:
+ 
+ * alert
+ * Card
+ * TextFormField
+ * RaisedButton
+ * setState
+ * CircularProgressIndicator
 
 
 
 
-## Getting Started
+
 
 
 
